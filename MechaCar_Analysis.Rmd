@@ -1,0 +1,89 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+Car <- read.csv(file="Resources/MechaCar_mpg.csv")
+```
+
+
+```{r}
+head(Car)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+```{r}
+summary(Car)
+```
+```{r}
+linear_Regression <- lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD, data=Car)
+
+```
+
+
+```{r}
+summary(linear_Regression)
+
+```
+
+```{r}
+Coil <- read.csv(file="Resources/Suspension_Coil.csv")
+head(Coil)
+```
+
+
+```{r}
+total_summary <- Coil %>% summarize(Mean=mean(PSI),
+                                          Median=median(PSI),
+                                          Variance=var(PSI),
+                                          SD=sd(PSI),
+                                           .groups = 'keep')
+```
+
+
+```{r}
+lot_summary <- Coil  %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI),
+                                          Median=median(PSI),
+                                          Variance=var(PSI),
+                                          SD=sd(PSI),
+                                           .groups = 'keep')  
+```
+
+
+O
+```{r}
+plt1 <- ggplot(Coil,aes(y=PSI))
+plt1 + geom_boxplot() 
+```
+```{r}
+plt2 <- ggplot(Coil,aes(x=Manufacturing_Lot,y=PSI)) 
+plt2 + geom_boxplot()
+```
+
+```{r}
+t.test(Coil$PSI,mu=1500)
+```
+```{r}
+lot1 <- subset(Coil, Manufacturing_Lot=="Lot1")
+lot2 <- subset(Coil, Manufacturing_Lot=="Lot2")
+lot3 <- subset(Coil, Manufacturing_Lot=="Lot3")
+
+
+```
+
+```{r}
+t.test(lot1$PSI,mu=1500)
+t.test(lot2$PSI,mu=1500)
+t.test(lot3$PSI,mu=1500)
+```
+
+
