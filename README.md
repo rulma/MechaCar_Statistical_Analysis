@@ -5,6 +5,10 @@
 In this project we have been tasked with analyzing proudction data to assist AutoRUs's manufacturing team. We will conduct a linear regression analysis to predict which variables in the dataset predict the mpg of MechaCar prototypes. In addition, we will collect summary statistics on the pounds per square inch (PSI) of the suspension coils from the manufacturing lots. Lastly we will design a statistical study to compare MechaCar's pefomance to it's competitors.
 
 ## Linear Regression Analysis
+
+For our initial analysis in helping the manufacturing team, we wanted to see how lenth, weight, spoiler angle, ground clearence and all wheel drive. effect the fuel efficiency of the MechCar. To do this we performed a linear regression to better understand which qualities have the greatest estimated impact on fuel efficiency. Having this knowlodge will allow the production team to design better more effficient machines.
+
+**Code**
 ```r
 Car <- read.csv(file="Resources/MechaCar_mpg.csv")
 library(dplyr)
@@ -19,7 +23,7 @@ linear_Regression <- lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + 
 
 summary(linear_Regression)
 ```
-
+**Output**
 ```r
 Call:
 lm(formula = mpg ~ vehicle_length + vehicle_weight + spoiler_angle + 
@@ -45,5 +49,21 @@ Multiple R-squared:  0.7149,	Adjusted R-squared:  0.6825
 F-statistic: 22.07 on 5 and 44 DF,  p-value: 5.35e-11
 ```
 ## Summary Statistics on Suspension Coils
+```r
+Coil <- read.csv(file="Resources/Suspension_Coil.csv")
+head(Coil)
+
+total_summary <- Coil %>% summarize(Mean=mean(PSI),
+                                    Median=median(PSI),
+                                    Variance=var(PSI),
+                                    SD=sd(PSI),
+                                    .groups = 'keep')
+
+lot_summary <- Coil  %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI),
+                                                                   Median=median(PSI),
+                                                                   Variance=var(PSI),
+                                                                   SD=sd(PSI),
+                                                                   .groups = 'keep')
+```
 
 ## Study Design: MechaCar vs Competition
