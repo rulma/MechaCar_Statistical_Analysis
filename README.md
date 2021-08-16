@@ -81,9 +81,13 @@ lot_summary <- Coil  %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI
 
 ![Total](https://github.com/rulma/MechaCar_Statistical_Analysis/blob/27e1955e377abcc54ee23a3292c621c0798723dd/Resources/Total_sum.PNG)
 
+As we can see, overall our manufacturing proces keeps the variance in PSI to <100 pounds. Let's take a deeper look and see if that holds true in individual manufacturing lots.
+
 #### Lot Summary Table
 
 ![Lot](https://github.com/rulma/MechaCar_Statistical_Analysis/blob/27e1955e377abcc54ee23a3292c621c0798723dd/Resources/Lot_Sum.PNG)
+
+From the above table, both Lots 1 and 2 are well within the allowed range of variance. Lot 3 on the other hand is nearly double the maximum variance allowed. We would need further investigation to determine what went wrong in amnufactuering to lead to scha great variation in manufacturing quality.
 
 ## T-test on Suspension Coils
 
