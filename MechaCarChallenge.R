@@ -29,13 +29,6 @@ lot_summary <- Coil  %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI
                                                                    .groups = 'keep')
 # Deliverable 3 
 
-plt1 <- ggplot(Coil,aes(y=PSI))
-plt1 + geom_boxplot(
-  
-plt2 <- ggplot(Coil,aes(x=Manufacturing_Lot,y=PSI)) 
-plt2 + geom_boxplot()
-
-
 t.test(Coil$PSI,mu=1500)
 
 lot1 <- subset(Coil, Manufacturing_Lot=="Lot1")
