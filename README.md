@@ -23,6 +23,9 @@ linear_Regression <- lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + 
 
 summary(linear_Regression)
 ```
+
+The resulting outpute gives us insight into which build features have the greatest impact on fuel efficiency.
+
 **Output**
 ```r
 Call:
@@ -48,9 +51,14 @@ Residual standard error: 8.774 on 44 degrees of freedom
 Multiple R-squared:  0.7149,	Adjusted R-squared:  0.6825 
 F-statistic: 22.07 on 5 and 44 DF,  p-value: 5.35e-11
 ```
+
+Using a signifigance level of 0.05, the model indicates that Vehicle Length and Ground Clearance have a measurable impact of the MechaCar's fuel efficency. Our model also has a R-squared value of 0.774, meaning we are able to capture and explain 77.4% of the variance in fuel efficncy with our selected variables.
+
 ## Summary Statistics on Suspension Coils
 
-**Code**
+Next we want to collect summary statistics on the MechaCar's suspension coils. We want to be able to compare lots and their respective PSI in the suspension coils during testing.
+
+With this we will be able to determine if any lots exceeded the design specifications that state coil PSI variance cannot exceed 100 pounds.
 ```r
 Coil <- read.csv(file="Resources/Suspension_Coil.csv")
 head(Coil)
@@ -69,17 +77,18 @@ lot_summary <- Coil  %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI
 ```
 **Output**
 
+#### Total Summary Table
+
+![Total](https://github.com/rulma/MechaCar_Statistical_Analysis/blob/27e1955e377abcc54ee23a3292c621c0798723dd/Resources/Total_sum.PNG)
+
+#### Lot Summary Table
+
+![Lot](https://github.com/rulma/MechaCar_Statistical_Analysis/blob/27e1955e377abcc54ee23a3292c621c0798723dd/Resources/Lot_Sum.PNG)
+
 ## T-test on Suspension Coils
 
 **Code**
 ```r
-plt1 <- ggplot(Coil,aes(y=PSI))
-plt1 + geom_boxplot(
-  
-plt2 <- ggplot(Coil,aes(x=Manufacturing_Lot,y=PSI)) 
-plt2 + geom_boxplot()
-
-
 t.test(Coil$PSI,mu=1500)
 
 lot1 <- subset(Coil, Manufacturing_Lot=="Lot1")
