@@ -66,4 +66,64 @@ lot_summary <- Coil  %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI
                                                                    .groups = 'keep')
 ```
 
+## T-test on on Suspension Coils
+```r
+plt1 <- ggplot(Coil,aes(y=PSI))
+plt1 + geom_boxplot(
+  
+plt2 <- ggplot(Coil,aes(x=Manufacturing_Lot,y=PSI)) 
+plt2 + geom_boxplot()
+
+
+t.test(Coil$PSI,mu=1500)
+
+lot1 <- subset(Coil, Manufacturing_Lot=="Lot1")
+lot2 <- subset(Coil, Manufacturing_Lot=="Lot2")
+lot3 <- subset(Coil, Manufacturing_Lot=="Lot3")
+
+t.test(lot1$PSI,mu=1500)
+t.test(lot2$PSI,mu=1500)
+t.test(lot3$PSI,mu=1500)
+```
+```r
+> t.test(lot1$PSI,mu=1500)
+
+	One Sample t-test
+
+data:  lot1$PSI
+t = 0, df = 49, p-value = 1
+alternative hypothesis: true mean is not equal to 1500
+95 percent confidence interval:
+ 1499.719 1500.281
+sample estimates:
+mean of x 
+     1500 
+
+> t.test(lot2$PSI,mu=1500)
+
+	One Sample t-test
+
+data:  lot2$PSI
+t = 0.51745, df = 49, p-value = 0.6072
+alternative hypothesis: true mean is not equal to 1500
+95 percent confidence interval:
+ 1499.423 1500.977
+sample estimates:
+mean of x 
+   1500.2 
+
+> t.test(lot3$PSI,mu=1500)
+
+	One Sample t-test
+
+data:  lot3$PSI
+t = -2.0916, df = 49, p-value = 0.04168
+alternative hypothesis: true mean is not equal to 1500
+95 percent confidence interval:
+ 1492.431 1499.849
+sample estimates:
+mean of x 
+  1496.14 
+
+```
 ## Study Design: MechaCar vs Competition
