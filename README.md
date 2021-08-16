@@ -49,6 +49,8 @@ Multiple R-squared:  0.7149,	Adjusted R-squared:  0.6825
 F-statistic: 22.07 on 5 and 44 DF,  p-value: 5.35e-11
 ```
 ## Summary Statistics on Suspension Coils
+
+**Code**
 ```r
 Coil <- read.csv(file="Resources/Suspension_Coil.csv")
 head(Coil)
@@ -65,8 +67,11 @@ lot_summary <- Coil  %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI
                                                                    SD=sd(PSI),
                                                                    .groups = 'keep')
 ```
+**Output**
 
-## T-test on on Suspension Coils
+## T-test on Suspension Coils
+
+**Code**
 ```r
 plt1 <- ggplot(Coil,aes(y=PSI))
 plt1 + geom_boxplot(
@@ -85,6 +90,8 @@ t.test(lot1$PSI,mu=1500)
 t.test(lot2$PSI,mu=1500)
 t.test(lot3$PSI,mu=1500)
 ```
+
+**Output**
 ```r
 > t.test(lot1$PSI,mu=1500)
 
