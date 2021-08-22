@@ -147,3 +147,21 @@ mean of x
 
 ```
 ## Study Design: MechaCar vs Competition
+
+For our proposed study we would like to analyze the emissions of the MechaCar vs. its competitors. We would like to see if the engineers were able to create a more environmentally friendly car than the competition.
+
+#### Metric to Test
+
+The metrics we would test would be carbon emissions, year manufactured, as well as fuel efficiency and cost of vehicle. With these metrics we will be able to compare avg. emissions to competitors and see the relationship between fuel efficiency and emissions. The age of the vehicle will allow us to see how the age of the vehicle relates to the avg. emissions. Lastly, analyzing cost will give us an idea if there is any correlation in our market between car cost and avg. emissions. 
+
+#### Null Hypothesis
+
+The average emissions of the MechaCar prototype is not different than the average emissions of the competition.
+
+#### Alternative Hypothesis
+
+The average emissions of the MechaCar prototype are different than that of the competition.
+
+#### Statistical Test
+
+For our statistical test we will use an ANOVA test to compare 3 or more means. The means we will be comparing will be the average carbon emissions of each vehicle. We will also conduct a multiple linear regression to see if the manufactured year and cost of the car explain the car's average emissions.
